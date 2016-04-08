@@ -18,3 +18,6 @@ try
 source ~/.vim_runtime/my_configs.vim
 catch
 endtry
+
+command Scom :normal i{% comment %}<ESC>
+command Ecom :normal i{% endcomment %}<ESC>
