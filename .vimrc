@@ -12,6 +12,10 @@ highlight Normal ctermfg=grey ctermbg=black
 "Bracket highlight colour
 highlight MatchParen cterm=bold ctermbg=black ctermfg=green
 
+"Pydocstring
+let g:template_vim_template_dir = '~/.vim_runtime/docstring/'
+let g:pydocstring_templates_dir = '/home/ubuntu/.vim_runtime/docstring/'
+
 :nnoremap <silent> [<space> :pu! _<cr>:']+1<cr>
 :nnoremap <silent> ]<space> :pu _<cr>:'[-1<cr>
 try
