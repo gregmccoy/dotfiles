@@ -1,0 +1,100 @@
+,V
+ ,v
+;,v
+3,v
+#,v
+d,v
+i,v
+l,v
+o,v
+s,v
+x,v
+p,v
+2,v
+:,v
+t,v
+-,v
+r,v
+e,v
+b,v
+top,v
+                    ,V
+                    </tr>,V
+                    <tr>,V
+                        <td style="line-height: 19px; font-size:15px; padding-top:4px; padding-bottom:13px;" width="415" align="left" colspan="2"><strong>Donation details:</strong></td>,V
+n,v
+c,v
+0,v
+1,v
+                  <img src="http://www.gfamedia.org/images/joshua-100-seal.png" width="50" style="padding-right:15px;">,V
+},v
+-{{ order_item.amount},v
+u,v
+m,v
+a,v
+.,v
+_,v
+{,v
+Total,v
+                                        <!-- END LINE ITEMS -->,V
+                    <!-- BEGIN LINE ITEMS -->,V
+                      {% endfor %},V
+                      </tr>,V
+                        <td width="70"  align="right" style="padding-right:0px; padding-bottom:10px;">{{ currency_label }}{{ order_item.amount }}</td>,V
+                        <td width="330" align="left" style="padding-bottom:10px;">{{ order_item.name }}</td>,V
+                      <tr>,V
+                     {% for order_item in order.order_item_set.all %},V
+                {% for%},V
+            o.write(old),V
+        with open("/home/canadabot/canadabot2.0/new.html", "w") as o:,V
+),v
+",v
+(,v
+8,v
+f,v
+=,v
+g,v
+,,v
+utf,v
+=",v
+encoding,v
+    old = old.decode("unicode_escape"),V
+    body = body.rstrip(),V
+    old = old.rstrip(),V
+body,v
+old,v
+        with open("/home/canadabot/canadabot2.0/old.html", "w", encoding="utf-8") as o:            o.write(body),V
+org,v
+y,v
+    return None,V
+h,v
+<,v
+T,v
+C,v
+O,v
+D,v
+!,v
+            print(allowed[method]),V
+    print(**kwargs),V
+    print(request.POST),V
+    print(data),V
+            print("\n\n\n\n\n\n\n PUT" + data),V
+    print("\n\n\n\n\nPUT"),V
+form,v
+    print(form),V
+rstrip,v
+    old = old.replace(r"\r", r""),V
+    body = body.replace(r"\r", r""),V
+        ,V
+    print(old),V
+\,v
+    print(result),V
+    result = difflib.SequenceMatcher(None, body, old),V
+str2,v
+str1,v
+body ,v
+    body = body.replace(r"\r\n", r"\n"),V
+from pprint import pprint,V
+old ,v
+from difflib import Differ,V
+    pprint(diff),V

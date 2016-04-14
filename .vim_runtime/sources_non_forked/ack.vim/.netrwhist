@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/ubuntu/gfa-apps/donation_carts'
+let g:netrw_dirhist_2='ftp://ubuntu@greg.mygfa.org/'
+let g:netrw_dirhist_3='sftp://ubuntu@greg.mygfa.org/'
