@@ -93,7 +93,9 @@ bindsym $mod+Control+a focus parent
 #bindsym $mod+d focus child
 
 #exaile toggle
-bindsym $mod+Tab exec exaile -t
+bindsym $mod+Tab exec playerctl play-pause
+bindsym $mod+greater exec playerctl next
+bindsym $mod+less exec playerctl previous
 
 #volume
 bindsym XF86AudioMute exec amixer set Master toggle
