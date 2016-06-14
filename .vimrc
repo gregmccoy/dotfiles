@@ -1,10 +1,8 @@
 set number
 set shell=/bin/bash
 
-" Gnome-terminal color fix
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
+"Colour fix
+set t_Co=256
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -35,13 +33,16 @@ call vundle#end()
 
 set encoding=utf-8
 
+" Disable preview window for jedi
+set completeopt-=preview
+
 " Powerline
 let $PYTHONPATH='/usr/lib/python3.5/site-packages'
 set laststatus=2
 
 " Python indents and spacing
 set autoindent
-set noexpandtab
+set expandtab
 set tabstop=4
 set shiftwidth=4
 
