@@ -77,3 +77,6 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
+
+" Flake8
+command Flake8 call Flake8()
