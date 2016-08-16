@@ -29,7 +29,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a termrinal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -77,8 +77,8 @@ bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+i layout toggle split
+bindsym $mod+e layout tabbed
+bindsym $mod+w layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -161,10 +161,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #############Colors##############
-set $bg #2c2c2e 
-set $fg #9f9f9f 
-set $hi #efef8f 
-set $ac #a0afa0 
+set $bg #2c2c2e
+set $fg #9f9f9f
+set $hi #efef8f
+set $ac #a0afa0
 set $tx #040404
 set $ia #8f8f8f
 set $be #8faf9f
@@ -172,8 +172,8 @@ set $yw #ccdc90
 set $gn #88b090
 set $rd #e89393
 
-client.focused   $ac   $ac   $tx 
-client.unfocused    $bg   $bg   $ia 
+client.focused   $ac   $ac   $tx
+client.unfocused    $bg   $bg   $ia
 client.focused_inactive   $bg   $bg   $ac
 
 
@@ -221,8 +221,9 @@ bar {
     position          top
     workspace_buttons yes
     tray_output       eDP1
-    
-    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    font pango:DejaVu Sans Mono 10
+
+    #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
     colors {
         background #000000
