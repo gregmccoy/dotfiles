@@ -7,6 +7,9 @@ set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" HTML tag matcher
+Plugin 'Valloric/MatchTagAlways'
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -51,6 +54,9 @@ filetype plugin indent on
 
 set wildmenu
 
+" :e tab completion
+set wildmode=full
+
 colorscheme hybrid
 highlight Normal ctermfg=grey ctermbg=black
 
@@ -65,6 +71,13 @@ set cursorline
 
 "Bracket highlight colour
 highlight MatchParen cterm=bold ctermbg=black ctermfg=green
+
+" HTML MatchTag allows changing options
+let g:mta_use_matchparen_group = 0
+let g:mta_set_default_matchtag_color = 0
+
+" HTML Tag match colour
+highlight MatchTag ctermfg=green
 
 "Search colour
 highlight Search ctermfg=black ctermbg=yellow
