@@ -29,6 +29,13 @@ Plugin 'nvie/vim-flake8'
 " colorscheme
 Plugin 'w0ng/vim-hybrid'
 
+" HTML tag matching
+Plugin 'matchit.zip'
+Plugin 'MatchTag'
+
+" Powerline
+Plugin 'powerline/powerline'
+
 call vundle#end()
 
 set encoding=utf-8
@@ -78,5 +85,5 @@ map <C-n> :NERDTreeToggle<CR>
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
 
-" Flake8
-command Flake8 call Flake8()
+" Set paste
+set pastetoggle=<F2>
