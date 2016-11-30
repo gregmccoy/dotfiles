@@ -39,6 +39,9 @@ Plugin 'MatchTag'
 " Powerline
 Plugin 'powerline/powerline'
 
+" Jquery syntax
+Plugin 'itspriddle/vim-jquery'
+
 call vundle#end()
 
 set encoding=utf-8
