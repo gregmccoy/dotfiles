@@ -127,6 +127,9 @@ com Colb :normal i<div class="col-md-12"><ESC>o</div>
 com Ediv :normal i</div><ESC>
 com Submit :normal i<button type="submit" class="btn btn-primary">Submit</button><ESC>o
 
+" Because sudo inside vim
+command W w !sudo tee % > /dev/null
+
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
 
