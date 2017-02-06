@@ -48,6 +48,9 @@ Plugin 'stephpy/vim-yaml'
 " Colour preview
 Plugin 'ap/vim-css-color'
 
+" Emmet vim
+Plugin 'mattn/emmet-vim'
+
 call vundle#end()
 
 set encoding=utf-8
@@ -69,13 +72,19 @@ syntax enable
 filetype plugin indent on
 
 autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype python setlocal cc=80
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 expandtab
+
+" Highlight 80th in python files for PEP80
 
 set wildmenu
 
 " :e tab completion
 set wildmode=full
+
+" jj to esc mapping
+:imap jj <Esc>
 
 colorscheme hybrid
 highlight Normal ctermfg=grey ctermbg=black
@@ -96,6 +105,9 @@ highlight MatchParen cterm=bold ctermbg=black ctermfg=green
 let g:mta_use_matchparen_group = 0
 let g:mta_set_default_matchtag_color = 0
 
+" map emmet trigger to ,,
+let g:user_emmet_leader_key=','
+
 " HTML Tag match colour
 highlight MatchTag ctermfg=green
 
@@ -108,8 +120,20 @@ set hlsearch
 " Ctrl-n Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" HTML shortcuts
+com Row :normal i<div class="row"><ESC>o</div>
+com Cola :normal i<div class="col-md-8 col-md-offset-2"><ESC>o</div>
+com Colb :normal i<div class="col-md-12"><ESC>o</div>
+com Ediv :normal i</div><ESC>
+com Submit :normal i<button type="submit" class="btn btn-primary">Submit</button><ESC>o
+
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
+
+"256 colours
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
 
 
 " Set paste
