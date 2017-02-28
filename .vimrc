@@ -15,7 +15,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Code completion
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'Shougo/neocomplete'
 
 "NERDTree
 Plugin 'scrooloose/nerdTree'
@@ -108,6 +109,18 @@ let g:mta_set_default_matchtag_color = 0
 " map emmet trigger to ,,
 let g:user_emmet_leader_key=','
 
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
 " HTML Tag match colour
 highlight MatchTag ctermfg=green
 
@@ -127,8 +140,9 @@ com Colb :normal i<div class="col-md-12"><ESC>o</div>
 com Ediv :normal i</div><ESC>
 com Submit :normal i<button type="submit" class="btn btn-primary">Submit</button><ESC>o
 
-" Because sudo inside vim
-command W w !sudo tee % > /dev/null
+map <C-a> :Cola<CR>
+map <C-b> :Colb<CR>
+
 
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
@@ -141,3 +155,6 @@ endif
 
 " Set paste
 set pastetoggle=<F2>
+
+" Because sudo inside vim
+command W w !sudo tee % > /dev/null
