@@ -7,6 +7,12 @@ set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Diagraphs
+Plugin 'chrisbra/unicode.vim'
+
+" HTML surrond
+Plugin 'tpope/vim-surround'
+
 " HTML tag matcher
 Plugin 'Valloric/MatchTagAlways'
 
@@ -51,6 +57,9 @@ Plugin 'ap/vim-css-color'
 
 " Emmet vim
 Plugin 'mattn/emmet-vim'
+
+"Django templates
+Plugin 'yodiaditya/vim-pydjango'
 
 call vundle#end()
 
@@ -133,16 +142,18 @@ set hlsearch
 " Ctrl-n Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
+" Change Dir
+com Change cd %:h
+
 " HTML shortcuts
-com Row :normal i<div class="row"><ESC>o</div>
-com Cola :normal i<div class="col-md-8 col-md-offset-2"><ESC>o</div>
+com Row :normal i<div class="row"><ESC>o<ESC>o</div>
+com Cola :normal i<div class="col-md-8 col-md-offset-2"><ESC>o<ESC>o</div>
 com Colb :normal i<div class="col-md-12"><ESC>o</div>
 com Ediv :normal i</div><ESC>
 com Submit :normal i<button type="submit" class="btn btn-primary">Submit</button><ESC>o
 
-map <C-a> :Cola<CR>
-map <C-b> :Colb<CR>
-
+map <C-a> :Row<CR>:normal k<CR>:Cola<CR>
+map <C-b> :Cola<CR>
 
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
@@ -158,3 +169,13 @@ set pastetoggle=<F2>
 
 " Because sudo inside vim
 command W w !sudo tee % > /dev/null
+
+" remap ; to :
+nnoremap ; :
+
+" Trans tags!
+vnoremap T di{% trans "" %}<ESC>bbp
+
+" text-center!
+vnoremap C di<div class="text-center"></div><ESC>bblp
+
