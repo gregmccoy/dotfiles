@@ -10,6 +10,9 @@ call vundle#begin()
 " Diagraphs
 Plugin 'chrisbra/unicode.vim'
 
+" Ctrl P file navigation
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " HTML surrond
 Plugin 'tpope/vim-surround'
 
@@ -154,6 +157,9 @@ com Submit :normal i<button type="submit" class="btn btn-primary">Submit</button
 
 map <C-a> :Row<CR>:normal k<CR>:Cola<CR>
 map <C-b> :Cola<CR>
+
+nmap ,p :set invpaste paste?<cr>
+set scrolloff=5
 
 " Strip whitespace
 autocmd BufWritePre * StripWhitespace
