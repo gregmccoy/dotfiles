@@ -99,6 +99,7 @@ set wildmode=full
 " jj to esc mapping
 :imap jj <Esc>
 
+set background=dark
 colorscheme hybrid
 highlight Normal ctermfg=grey ctermbg=black
 
