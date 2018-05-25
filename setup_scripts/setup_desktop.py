@@ -71,7 +71,7 @@ def install_gpmdp():
     print("\n Installing Google Play Desktop Music Player")
     print("----------------------------------------------")
     sp.call(["wget", "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.5.0/google-play-music-desktop-player-4.5.0.x86_64.rpm", "-o", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
-#    sp.call(["sudo", "dnf", "install", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
+    sp.call(["sudo", "dnf", "install", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
 
 
 def copy_ssh():
