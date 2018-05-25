@@ -57,3 +57,4 @@ libxkbcommon-x11-devel
 pcre-devel
 pango-devel
 gcc
+ansible
