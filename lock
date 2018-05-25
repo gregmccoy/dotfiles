@@ -1,6 +1,5 @@
 #!/bin/bash
 TMPBG=/tmp/screen.png
-LOCK=$HOME/.background/locked.png
 RES=$(xrandr | grep 'current' | sed -E 's/.*current\s([0-9]+)\sx\s([0-9]+).*/\1x\2/')
 ffmpeg -f x11grab -video_size $RES -y -i $DISPLAY -filter_complex "boxblur=10:5" -vframes 1 $TMPBG -loglevel quiet
 i3lock -f -i $TMPBG

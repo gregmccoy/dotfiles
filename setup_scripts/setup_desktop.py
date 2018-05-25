@@ -1,4 +1,6 @@
 import subprocess as sp
+import shutil
+import os, glob
 
 def install_packages():
     print("Installing Packages with DNF")
@@ -20,48 +22,89 @@ def install_i3_gaps():
     sp.call(["autoreconf", "--force", "--install"], cwd=gaps_dir)
     sp.call(["rm", "-rf", gaps_dir + "/build"])
     sp.call(["mkdir", "-p", gaps_dir + "/build"])
-    sp.call(["./configure", "--prefix=/usr", "--sysconfdir=/etc", "--disable-sanitizers"], cwd=gaps_dir)
-    sp.call(["make"])
-    sp.call(["sudo", "make", "install"])
+    sp.call(["../configure", "--prefix=/usr", "--sysconfdir=/etc", "--disable-sanitizers"], cwd=gaps_dir + "/build")
+    sp.call(["make"], cwd=gaps_dir + "/build")
+    sp.call(["sudo", "make", "install"], cwd=gaps_dir + "/build")
 
 
 def copr_install_flat_remix():
     print("\nInstalling Flat remix")
-    sp.call(["sudo", "dnf", "copr", "enable", "daniruiz/flat-remix"])
-    sp.call(["sudo", "dnf", "install", "flat-remix"])
+    sp.call(["sudo", "dnf", "copr", "-y", "enable", "daniruiz/flat-remix"])
+    sp.call(["sudo", "dnf", "install", "-y", "flat-remix"])
 
 
 def copy_configs():
     print("\nCopying config files")
     print("----------------------")
+    #sp.call(["mkdir", "/home/gregmccoy/.config/i3"])
     sp.call(["cp", "../config", "/home/gregmccoy/.config/i3/config"])
     sp.call(["cp", "-a", "../.scripts", "/home/gregmccoy"])
     sp.call(["sudo", "cp", "../lock", "/bin/lock"])
     sp.call(["sudo", "cp", "../gtk-3.0/settings.ini", "/home/gregmccoy/.config/gtk-3.0/"])
-    sp.call(["cp", "../.speedswapper", "~" ])
+    sp.call(["cp", "../.speedswapper", "/home/gregmccoy" ])
     sp.call(["cp", "-a", "../.vim/", "/home/gregmccoy"])
     sp.call(["cp", "../.vimrc", "/home/gregmccoy"])
+    sp.call(["cp", "../.bashrc", "/home/gregmccoy"])
+    sp.call(["cp", "../.speedswapper", "/home/gregmccoy"])
 
 
-#def install_gpmdp():
-#    print("\n Installing Google Play Desktop Music Player")
-#    sp.call(["wget", "https://github-production-release-asset-2e65be.s3.amazonaws.com/40008106/5b7132cc-0621-11e8-8a84-1e97eab3979e?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20180523%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20180523T145832Z&X-Amz-Expires=300&X-Amz-Signature=dc75e65830f99aaeb1ee66ecb8845bc6403e27ac9de9c5fc4c4523062f27110e&X-Amz-SignedHeaders=host&actor_id=15632035&response-content-disposition=attachment%3B%20filename%3Dgoogle-play-music-desktop-player-4.5.0.x86_64.rpm&response-content-type=application%2Foctet-stream", "-o", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
+def install_ffmpeg():
+    print("\nInstalling ffmpeg with RPM Fusion")
+    print("-----------------------------------")
+    FEDORA_VERSION = "28"
+    sp.call(["sudo", "dnf", "install", "-y", "http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-28.noarch.rpm", "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-28.noarch.rpm"])
+    sp.call(["sudo", "dnf", "install", "-y", "ffmpeg"])
+
+
+def install_gcloud():
+    print("\n Installing gcloud and kubectl")
+    print("--------------------------------")
+    sp.call(["sudo", "cp", "google-cloud-sdk.repo", "/etc/yum.repos.d/google-cloud-sdk.repo"])
+    sp.call(["sudo", "dnf", "install", "-y", "google-cloud-sdk"])
+    sp.call(["gcloud", "init"])
+    sp.call(["sudo", "dnf", "install", "-y", "kubectl"])
+    sp.call(["gcloud", "container", "clusters", "get-credentials", "gfa-cluster"])
+    sp.call(["kubectl", "config", "set-context", "gke_gfa-cluster-175514_us-west1-a_gfa-cluster", "--namespace=gfa-namespace"])
+
+
+def install_gpmdp():
+    print("\n Installing Google Play Desktop Music Player")
+    print("----------------------------------------------")
+    sp.call(["wget", "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.5.0/google-play-music-desktop-player-4.5.0.x86_64.rpm", "-o", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
 #    sp.call(["sudo", "dnf", "install", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
 
 
 def copy_ssh():
     print("\nCopying SSH files")
-    sp.call(["cp", "/home/gregmccoy/Nextcloud/Desktop/.ssh/*", "/home/gregmccoy/.ssh/"])
+    sp.call(["cp", "-a", "/home/gregmccoy/Nextcloud/Desktop/.ssh", "/home/gregmccoy/"])
 
 
-#install_packages()
-#sp.call(["mkdir", "~/Programming"])
-#sp.call(["mkdir", "~/.ssh"])
-#install_i3_gaps()
-#install_gpmdp()
+def install_i3blocks():
+    print("\n Installing i3blocks")
+    print("----------------------")
+    blocks_dir = "/home/gregmccoy/Programming/i3blocks"
+    sp.call(["rm", "-rf", blocks_dir])
+    sp.call(["git", "clone", "https://github.com/vivien/i3blocks", blocks_dir])
+    sp.call(["make", "clean", "debug", blocks_dir])
+    sp.call(["sudo", "make", "install"], cwd=blocks_dir)
+    sp.call(["sudo", "mkdir", "/usr/share/i3blocks/"])
+    for i in glob.glob(os.path.join(blocks_dir + "/scripts", '*')):
+        print(i)
+        sp.call(["sudo", "cp", i, "/usr/share/i3blocks/"])
+
+
+
+install_packages()
+sp.call(["mkdir", "~/Programming"])
+sp.call(["mkdir", "~/.ssh"])
+install_i3_gaps()
+install_i3blocks()
+install_gpmdp()
 copr_install_flat_remix()
 copy_configs()
 sp.call(["nextcloud"])
 copy_ssh()
+install_ffmpeg()
+install_gcloud()
 
 

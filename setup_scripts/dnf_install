@@ -58,3 +58,9 @@ pcre-devel
 pango-devel
 gcc
 ansible
+sysstat
+pavucontrol
+lxappearance
+gnome-tweaks
+i3lock
+nextcloud-client
