@@ -36,7 +36,7 @@ def copr_install_flat_remix():
 def copy_configs():
     print("\nCopying config files")
     print("----------------------")
-    #sp.call(["mkdir", "/home/gregmccoy/.config/i3"])
+    sp.call(["mkdir", "/home/gregmccoy/.config/i3"])
     sp.call(["cp", "../config", "/home/gregmccoy/.config/i3/config"])
     sp.call(["cp", "-a", "../.scripts", "/home/gregmccoy"])
     sp.call(["sudo", "cp", "../lock", "/bin/lock"])
