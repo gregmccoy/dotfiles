@@ -196,6 +196,7 @@ mode "resize" {
 #start xfce panel
 #exec --no-startup-id xfce4-panel --disable-wm-check
 exec ~/.fehbg.sh
+exec dunst -config ~/.config/dunst/dunstrc
 bindsym $mod+r mode "resize"
 #exec xinput set-prop 14 "Device Enabled" 0
 
@@ -215,7 +216,7 @@ exec compton -b
 # finds out, if available)
 bar {
     output            eDP-1
-    output	          VGA-1
+    output	      HDMI-1
     status_command    i3blocks
     position          top
     workspace_buttons yes
