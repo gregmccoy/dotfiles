@@ -186,3 +186,10 @@ vnoremap T di{% trans "" %}<ESC>bbp
 " text-center!
 vnoremap C di<div class="text-center"></div><ESC>bblp
 
+
+" Open a new tabe in the explorer window
+nmap ,t :tabe\|:Ex<cr>
+nmap J :tabp<cr>
+nmap K :tabn<cr>
+" Incremental search.
+set incsearch
