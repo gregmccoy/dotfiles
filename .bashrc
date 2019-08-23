@@ -115,6 +115,7 @@ alias gitlines="git ls-files | xargs wc -l"
 alias gep=grep
 alias storage2="smbclient -U canada.gfa.org/gregmccoy //storage2/data/ -m SMB3"
 alias shares="sudo mount -t cifs -o username=gregmccoy,domain=canada.gfa.org,vers=3.0 //storage2/data/ /mnt"
+alias nas="sudo mount -t cifs -o username=gregmccoy,domain=canada.gfa.org,vers=2.0 //nas1/data/ /mnt"
 
 export PS1="\[\033[38;5;2m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;21m\]\W\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 #export KUBECONFIG=/home/gregmccoy/.kube/kubeconfig

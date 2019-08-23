@@ -16,7 +16,7 @@ def install_packages():
 def install_i3_gaps():
     print("\nInstalling i3-gaps from source")
     print("-------------------------------")
-    gaps_dir = "/home/gregmccoy/Programming/i3-gaps"
+    gaps_dir = "/home/gmccoy/Programming/i3-gaps"
     sp.call(["rm", "-rf", gaps_dir])
     sp.call(["git", "clone", "https://github.com/Airblader/i3", gaps_dir])
     sp.call(["autoreconf", "--force", "--install"], cwd=gaps_dir)
@@ -36,16 +36,16 @@ def copr_install_flat_remix():
 def copy_configs():
     print("\nCopying config files")
     print("----------------------")
-    sp.call(["mkdir", "/home/gregmccoy/.config/i3"])
-    sp.call(["cp", "../config", "/home/gregmccoy/.config/i3/config"])
-    sp.call(["cp", "-a", "../.scripts", "/home/gregmccoy"])
+    sp.call(["mkdir", "/home/gmccoy/.config/i3"])
+    sp.call(["cp", "../config", "/home/gmccoy/.config/i3/config"])
+    sp.call(["cp", "-a", "../.scripts", "/home/gmccoy"])
     sp.call(["sudo", "cp", "../lock", "/bin/lock"])
-    sp.call(["sudo", "cp", "../gtk-3.0/settings.ini", "/home/gregmccoy/.config/gtk-3.0/"])
-    sp.call(["cp", "../.speedswapper", "/home/gregmccoy" ])
-    sp.call(["cp", "-a", "../.vim/", "/home/gregmccoy"])
-    sp.call(["cp", "../.vimrc", "/home/gregmccoy"])
-    sp.call(["cp", "../.bashrc", "/home/gregmccoy"])
-    sp.call(["cp", "../.speedswapper", "/home/gregmccoy"])
+    sp.call(["sudo", "cp", "../gtk-3.0/settings.ini", "/home/gmccoy/.config/gtk-3.0/"])
+    sp.call(["cp", "../.speedswapper", "/home/gmccoy" ])
+    sp.call(["cp", "-a", "../.vim/", "/home/gmccoy"])
+    sp.call(["cp", "../.vimrc", "/home/gmccoy"])
+    sp.call(["cp", "../.bashrc", "/home/gmccoy"])
+    sp.call(["cp", "../.speedswapper", "/home/gmccoy"])
 
 
 def install_ffmpeg():
@@ -70,19 +70,19 @@ def install_gcloud():
 def install_gpmdp():
     print("\n Installing Google Play Desktop Music Player")
     print("----------------------------------------------")
-    sp.call(["wget", "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.5.0/google-play-music-desktop-player-4.5.0.x86_64.rpm", "-o", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
-    sp.call(["sudo", "dnf", "install", "/home/gregmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
+    sp.call(["wget", "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.5.0/google-play-music-desktop-player-4.5.0.x86_64.rpm", "-o", "/home/gmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
+    sp.call(["sudo", "dnf", "install", "/home/gmccoy/Downloads/google-play-music-desktop-player-4.5.0.x86_64.rpm"])
 
 
 def copy_ssh():
     print("\nCopying SSH files")
-    sp.call(["cp", "-a", "/home/gregmccoy/Nextcloud/Desktop/.ssh", "/home/gregmccoy/"])
+    sp.call(["cp", "-a", "/home/gmccoy/Nextcloud/Desktop/.ssh", "/home/gmccoy/"])
 
 
 def install_i3blocks():
     print("\n Installing i3blocks")
     print("----------------------")
-    blocks_dir = "/home/gregmccoy/Programming/i3blocks"
+    blocks_dir = "/home/gmccoy/Programming/i3blocks"
     sp.call(["rm", "-rf", blocks_dir])
     sp.call(["git", "clone", "https://github.com/vivien/i3blocks", blocks_dir])
     sp.call(["make", "clean", "debug", blocks_dir])
@@ -94,15 +94,15 @@ def install_i3blocks():
 
 
 
-install_packages()
-sp.call(["mkdir", "~/Programming"])
-sp.call(["mkdir", "~/.ssh"])
-install_i3_gaps()
-install_i3blocks()
-install_gpmdp()
-copr_install_flat_remix()
-copy_configs()
-sp.call(["nextcloud"])
+#install_packages()
+#sp.call(["mkdir", "~/Programming"])
+#sp.call(["mkdir", "~/.ssh"])
+#install_i3_gaps()
+#install_i3blocks()
+#install_gpmdp()
+#copr_install_flat_remix()
+#copy_configs()
+#sp.call(["nextcloud"])
 copy_ssh()
 install_ffmpeg()
 install_gcloud()
