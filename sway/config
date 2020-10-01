@@ -201,12 +201,6 @@ bindsym $mod+r mode "resize"
 bindsym $mod+m exec /home/gmccoy/.scripts/on.sh
 bindsym $mod+n exec /home/gmccoy/.scripts/off.sh
 
-# i3gaps
-smart_gaps on
-
-gaps inner 5 
-gaps outer 5 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #
@@ -218,7 +212,6 @@ output DP-4 {
     resolution 1920x1080
     position 1920 0
 }
-output "*" bg /home/gmccoy/.wallpaper.jpg fill
 
 input 46084:257:Megawin_Technology_Inc._Programmable_Keyboard {
     xkb_options caps:escape
@@ -226,7 +219,6 @@ input 46084:257:Megawin_Technology_Inc._Programmable_Keyboard {
 
 bar {
     swaybar_command waybar
-    #status_command    i3blocks -c ~/.i3blocks.conf
     position          top
     workspace_buttons yes
     tray_output eDP-1
