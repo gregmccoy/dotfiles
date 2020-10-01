@@ -27,9 +27,9 @@ window#waybar.hidden {
 #window {
 	margin-top: 3px;
 	margin-bottom: 3px;
-    padding-left: 16px;
-    padding-right: 16px;
-	border-radius: 26px;
+    padding-left: 14px;
+    padding-right: 14px;
+	border-radius: 8px;
 	transition: none;
 	/*
     color: #f8f8f2;
@@ -51,7 +51,7 @@ window#waybar.PCSX2 #window {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	margin-left: 12px;
-	border-radius: 26px;
+	border-radius: 8px;
 	background: #282a36;
 	transition: none;
 }
@@ -78,9 +78,9 @@ window#waybar.PCSX2 #window {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-radius: 26px;
+	padding-left: 14px;
+	padding-right: 14px;
+	border-radius: 8px;
 	transition: none;
 	color: #4d4d4d;
 	background: #f1fa8c;
@@ -90,9 +90,9 @@ window#waybar.PCSX2 #window {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	margin-left: 8px;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-radius: 26px;
+	padding-left: 14px;
+	padding-right: 14px;
+	border-radius: 8px;
 	transition: none;
 	color: #4d4d4d;
 	background: #ff6e67;
@@ -102,11 +102,25 @@ window#waybar.PCSX2 #window {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	margin-left: 8px;
-	margin-right: 12px;
-	padding-left: 16px;
-	padding-right: 16px;
-	border-radius: 26px;
+	padding-left: 14px;
+	padding-right: 14px;
+	border-radius: 8px;
 	transition: none;
 	color: #f8f8f2;
 	background: #282a36;
 }
+
+#tray {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 8px;
+	margin-right: 12px;
+	padding-left: 14px;
+	padding-right: 14px;
+	border-radius: 8px;
+	transition: none;
+	color: #f8f8f2;
+	background: #336600;
+}
+
+
