@@ -9,6 +9,7 @@
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+set $gnome-schema org.gnome.desktop.interface
 
 set $mod Mod4
 set $mod2 Mod1
@@ -28,18 +29,26 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-for_window [class="Wine"] floating enable
+#for_window [class="Wine"] floating enable
+#for_window [app_id="zoom"] border none, floating enable
+#for_window [app_id="zoom" title="^(Zoom|About)$"] border pixel, floating enable
+#for_window [app_id="zoom" title="Settings"] floating enable, floating_minimum_size 1920 x 1080
 
-default_border pixel 
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, move position 877 450, sticky enable
+
+#for_window [app_id="ulauncher"] border none
+
+default_border pixel 1
 
 # start a termrinal
-bindsym $mod+Return exec terminator 
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run -theme Arc-Dark
+#bindsym $mod+d exec rofi -show run -theme Arc-Dark
+bindsym $mod+d exec fuzzel --background-color=272828df --text-color=ffffffff --width 60
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -163,13 +172,17 @@ set $yw #ccdc90
 set $gn #88b090
 set $rd #e89393
 
-#client.focused   $ac   $ac   $tx
-#client.unfocused    $bg   $bg   $ia
+client.focused          #16242D #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.focused   #3A3E40 #3A3E40 #3A3E40
+#client.unfocused   #000000 #000000 #000000
 #client.focused_inactive   $bg   $bg   $ac
 
 
 
-#new_window 1pixel
+#new_window pixel 0
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -195,7 +208,14 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#exec swayidle -w \
+#	timeout 600 'swaylock -f' \
+#	timeout 605 'swaymsg "output * power off"' \
+#	resume 'swaymsg "output * power on"'
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec mako --background-color=#353535 --border-color=#FFFFFF --border-size 1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 bindsym $mod+r mode "resize"
 
 bindsym $mod+m exec /home/gmccoy/.scripts/on.sh
@@ -213,7 +233,7 @@ output DP-4 {
     position 1920 0
 }
 
-input 46084:257:Megawin_Technology_Inc._Programmable_Keyboard {
+input "type:keyboard" {
     xkb_options caps:escape
 }
 
@@ -221,7 +241,7 @@ bar {
     swaybar_command waybar
     position          top
     workspace_buttons yes
-    tray_output eDP-1
+    #tray_output eDP-1
     font pango:DejaVu Sans Mono 10
 
     #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -229,7 +249,6 @@ bar {
     colors {
         background #000000
         statusline #ffffff
-
         #focused_workspace  #ffffff #285577
         #active_workspace   #ffffff #333333
         #inactive_workspace #888888 #222222
